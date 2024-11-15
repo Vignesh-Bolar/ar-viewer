@@ -44,19 +44,19 @@
         if (isIOS()) {
             // iOS: Provide USDZ link for AR Quick Look
             document.getElementById("content").innerHTML = `
-                <a href="https://github.com/eman-insilico/WebAR-Quick-Look-examples/blob/master/lion%20clock%20100k.usdz?raw=true"
+                <a href="/mnt/data/AutoGlassLoader.usdz" 
                    class="ar-button" rel="ar" target="_blank">
                    View in AR
                 </a>
             `;
         } else {
-            // Android/Other Devices: Use AR.js with A-Frame for marker-based AR
+            // Android/Other Devices: Use AR.js with A-Frame for marker-based AR and GLB model
             document.getElementById("content").innerHTML = `
                 <a-scene embedded arjs>
                     <!-- Hiro marker for AR.js -->
                     <a-marker preset="hiro">
-                        <!-- Simple 3D object to ensure visibility -->
-                        <a-box color="blue" position="0 0.5 0" scale="0.5 0.5 0.5"></a-box>
+                        <!-- Load GLB Model -->
+                        <a-entity gltf-model="https://cdn.sketchfab.com/models/39ecf887203e46c5a036f4f3d0198693/glb"></a-entity>
                     </a-marker>
                     <a-entity camera></a-entity>
                 </a-scene>
