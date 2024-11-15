@@ -1,71 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cross-Platform AR Viewer</title>
-<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-<script src="https://rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-<style>
-        body, html {
-            margin: 0;
-            overflow: hidden;
-            height: 100%;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Viewer in AR</title>
+    <style>
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
         }
-        .ar-button {
-            padding: 15px 25px;
-            font-size: 18px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .ar-link {
             text-align: center;
             text-decoration: none;
+            padding: 15px 25px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 8px;
         }
-</style>
+    </style>
 </head>
 <body>
-<div id="content">
-<!-- Dynamic button will load here based on device type -->
-</div>
- 
-    <script>
-        // Detect if the device is iOS
-        function isIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        }
- 
-        if (isIOS()) {
-            // iOS: Create a link to open the USDZ file in AR Quick Look
-            document.getElementById("content").innerHTML = `
-<a href="https://github.com/eman-insilico/WebAR-Quick-Look-examples/blob/master/lion%20clock%20100k.usdz?raw=true"
-                   class="ar-button" rel="ar" target="_blank">
-                   View in AR
-</a>
-            `;
-        } else {
-            // Non-iOS: Use AR.js with A-Frame for marker-based AR
-            document.getElementById("content").innerHTML = `
-<a-scene embedded arjs>
-<!-- Marker for AR.js -->
-<a-marker preset="hiro">
-<!-- Replace this with your 3D model -->
-<a-entity gltf-model="https://example.com/path-to-your-3d-model.glb" scale="0.5 0.5 0.5"></a-entity>
-</a-marker>
-<!-- Default camera for AR.js -->
-<a-entity camera></a-entity>
-</a-scene>
-<div style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: white;">
-                    Point the camera at the "hiro" marker to view the model.
-</div>
-            `;
-        }
-</script>
+    <!-- Link to USDZ Model -->
+    <a href="https://your-secure-host.com/your-model.usdz" class="ar-link" rel="ar" target="_blank">
+        View in AR
+    </a>
+
+    <!-- Safari will detect the USDZ format and open the AR viewer -->
 </body>
 </html>
