@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-
-    
-
-  
-                
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,38 +39,38 @@
         </div>
 
         <script>
-        // Detect if the device is iOS
-        function isIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        }
+    // Detect if the device is iOS
+    function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
 
-        if (isIOS()) {
-            // iOS: Create a link to open the USDZ file in AR Quick Look
-            document.getElementById("content").innerHTML = `
-            <h1>Please click below</h1>
-                < a href = "https://github.com/eman-insilico/WebAR-Quick-Look-examples/blob/master/lion%20clock%20100k.usdz?raw=true"
-            class="ar-button" rel = "ar" target = "_blank" >
-                View in AR
-                </a >
-                `;
-        } else {
-            // Non-iOS: Use AR.js with A-Frame for marker-based AR
-            document.getElementById("content").innerHTML = `
-                < a - scene embedded arjs >
-                    <!-- Marker for AR.js -->
-                    <a-marker preset="hiro">
-                        <!-- Replace this with your 3D model -->
-                        <a-entity gltf-model="https://github.com/Vignesh-Bolar/ar-viewer/blob/main/low_poly_desert_builing.glb" scale="0.5 0.5 0.5"></a-entity>
-                    </a-marker>
-                    <!--Default camera for AR.js-- >
+    if (isIOS()) {
+        // iOS: Create a link to open the USDZ file in AR Quick Look
+        document.getElementById("content").innerHTML = `
+            <a href="https://github.com/eman-insilico/WebAR-Quick-Look-examples/blob/master/lion%20clock%20100k.usdz?raw=true"
+               class="ar-button" rel="ar" target="_blank">
+               View in AR
+            </a>
+        `;
+    } else {
+        // Non-iOS: Use AR.js with A-Frame for marker-based AR
+        document.getElementById("content").innerHTML = `
+            <a-scene embedded arjs>
+                <!-- Marker for AR.js -->
+                <a-marker preset="hiro">
+                    <!-- Replace this with your 3D model -->
+                    <a-entity gltf-model="https://github.com/Vignesh-Bolar/ar-viewer/blob/main/low_poly_desert_builing.glb" scale="0.5 0.5 0.5"></a-entity>
+                </a-marker>
+                <!-- Default camera for AR.js -->
                 <a-entity camera></a-entity>
-                </a - scene >
-                <div style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: white;">
-                    Point the camera at the "hiro" marker to view the model.
-                </div>
-            `;
-        }
-        </script>
+            </a-scene>
+            <div style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: white;">
+                Point the camera at the "hiro" marker to view the model.
+            </div>
+        `;
+    }
+</script>
+
     </body>
 
 </html>
